@@ -25,10 +25,26 @@
     </div>
 
 </nav>
+
 <div class="container mx-auto text-center">
     <h1 class="text-5xl font-bold">
         Crafty Creations
     </h1>
 </div>
+
+<main>
+    <article class="mb-6">
+        <h1><a href="/listings/myfirstlisting">The first listing</a>
+        </h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad architecto dolores esse ipsum iure magni odio pariatur quidem repellendus vitae? Accusamus consequatur dignissimos esse ex laboriosam reiciendis sed veritatis voluptatum!</p>
+    </article>
+    <article>
+        <h1><a href="/listings/mysecondlisting">The second listing</a>
+        </h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad architecto dolores esse ipsum iure magni odio pariatur quidem repellendus vitae? Accusamus consequatur dignissimos esse ex laboriosam reiciendis sed veritatis voluptatum!</p>
+    </article>
+
+
+</main>
 </body>
 </html>

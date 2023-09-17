@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Listing;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,10 @@ Route::get('/', function () {
     return view('index');
 });
 
-//Route::get('/index', function () {
-//    return view('index');
-//});
+Route::get('/listings/{listing}', function($slug){
+    //Find a post by its slug and pass it to a view called 'listing'
+//    'listing' = Listing::find($slug);
+    return view('listing', [
+        'listing' => Listing::find($slug)
+    ]);
+})->where('listing', '[A-z_\-]+');
