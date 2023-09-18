@@ -1,50 +1,22 @@
-<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite('resources/css/app.css')
-</head>
-<body>
+@extends('footer')
+@extends('layout')
+@extends('nav')
 
-<nav class="navbar bg-green-200 flex flex-wrap relative items-center justify-between hover:text">
-   <div class="flex flex-wrap items-center justify-between px-3">
-       <a href="/">
-           <img src="../img/logo.png" alt="Logo">
-       </a>
-   </div>
+@section('content')
 
-    <form action="/search" method="post" role="search">
-        <input type="search" name="search" placeholder="Search your gift!">
-    </form>
-    <div class="dropdown dropdown-end">
-        <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-        <div class="w-10 rounded-full">
-            <img src="../img/logo.png" alt="jj">
-        </div>
+    <div class="container mx-auto text-center">
+        <h1 class="text-5xl font-bold">
+            Crafty Creations
+        </h1>
     </div>
 
-</nav>
+    <main>
+        @foreach($listings as $listing)
 
-<div class="container mx-auto text-center">
-    <h1 class="text-5xl font-bold">
-        Crafty Creations
-    </h1>
-</div>
+            <article>
+                    <?= $listing; ?>
+            </article>
+        @endforeach
+    </main>
+@endsection
 
-<main>
-    <article class="mb-6">
-        <h1><a href="/listings/myfirstlisting">The first listing</a>
-        </h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad architecto dolores esse ipsum iure magni odio pariatur quidem repellendus vitae? Accusamus consequatur dignissimos esse ex laboriosam reiciendis sed veritatis voluptatum!</p>
-    </article>
-    <article>
-        <h1><a href="/listings/mysecondlisting">The second listing</a>
-        </h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad architecto dolores esse ipsum iure magni odio pariatur quidem repellendus vitae? Accusamus consequatur dignissimos esse ex laboriosam reiciendis sed veritatis voluptatum!</p>
-    </article>
-
-
-</main>
-</body>
-</html>
