@@ -15,6 +15,8 @@
 
             <article>
                     <?= $listing; ?>
+
+                <but><a href="/listings/{{$listing}}">View Listing</a></but>
             </article>
         @endforeach
     </main>
