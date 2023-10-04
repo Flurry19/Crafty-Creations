@@ -9,13 +9,13 @@ Route::get('/', function () {
 //    return Listing::find('myfirstlisting');
 //    return view('listings');
     return view('index', [
-        'listings' => Listing::all()]);
+        'products' => \App\Models\Product::all()]);
 });
 
-Route::get('/listings/{listing}', function($slug){
+Route::get('/products/{product}', function($id){
     //Find a post by its slug and pass it to a view called 'listing'
-    return view('listing', [
-        'listing' => Listing::find($slug),
+    return view('product', [
+        'product' => \App\Models\Product::find($id),
     ]);
 })->where('slug', '[A-z_\-]+');
 
