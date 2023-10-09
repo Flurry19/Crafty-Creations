@@ -10,4 +10,12 @@ class Product extends Model
     use HasFactory;
 //    protected $fillable = ['title', 'excerpt', 'body', 'price'];
     protected $guarded = ['id'];
-}
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
+    public function shop(){
+        return $this->belongsTo(Shop::class);
+    }
+  }
