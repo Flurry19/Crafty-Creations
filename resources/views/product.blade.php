@@ -36,7 +36,7 @@
 
                 <div class="lg:col-span-2 lg:row-span-2 lg:row-end-2">
                     <h1 class="sm: text-2xl font-bold text-gray-900 sm:text-3xl">{{$product->title}}</h1>
-                    <a href="/categories/{{$product->category->id}}" class="text-white bg-blue-300 hover:bg-blue-300 focus:ring-4 focus:outline-none focus:ring-blue-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-300 dark:hover:bg-blue-500 dark:focus:ring-blue-500">{{$product->category->name}}</a>
+                    <a href="/categories/{{$product->category->slug}}" class="text-white bg-blue-300 hover:bg-blue-300 focus:ring-4 focus:outline-none focus:ring-blue-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-300 dark:hover:bg-blue-500 dark:focus:ring-blue-500">{{$product->category->name}}</a>
 
 
                     {{--                    <div class="mt-5 flex items-center">--}}

@@ -5,43 +5,29 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
-Route::get('/', function () {
-//    return Listing::find('myfirstlisting');
-//    return view('listings');
-    return view('index', [
-        'products' => \App\Models\Product::all()]);
-});
+Route::get('/', [\App\Http\Controllers\ProductController::class, 'index']);
+Route::get('/products/{product:slug}', [\App\Http\Controllers\ProductController::class, 'show']);
 
-Route::get('/winkels', function () {
-//    return Listing::find('myfirstlisting');
-//    return view('listings');
-    return view('shoppage', [
-        'products' => \App\Models\Shop::all()]);
-});
+Route::get('/shops', [\App\Http\Controllers\ShopController::class, 'index']);
+Route::get('/shops/{shop:slug}', [\App\Http\Controllers\ShopController::class, 'show']);
 
-Route::get('/products/{product:slug}', function(\App\Models\Product $product){
-    //Find a post by its slug and pass it to a view called 'listing'
-    return view('product', [
-        'product' => $product,
-    ]);
+Route::get('/categories/{category:slug}', [\App\Http\Controllers\CategoryController::class, 'show']);
+
+
+
+
+
+Route::get('/makeproduct', function () {
+    return view('makeproduct');
 });
-//    ->where('slug', '[A-z_\-]+');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/categories/{category}', function(\App\Models\Category $category){
-    return view('index', [
-        'products' => $category->product
-    ]);
-});
 
-Route::get('/shops/{shop}', function(\App\Models\Shop $shop){
-    return view('index', [
-        'products' => $shop->product
-    ]);
-});
+
+
 
 

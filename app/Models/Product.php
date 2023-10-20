@@ -10,6 +10,7 @@ class Product extends Model
     use HasFactory;
 //    protected $fillable = ['title', 'excerpt', 'body', 'price'];
     protected $guarded = ['id'];
+    protected $with = ['category', 'shop'];
 
     public function category(){
         return $this->belongsTo(Category::class);
@@ -18,4 +19,14 @@ class Product extends Model
     public function shop(){
         return $this->belongsTo(Shop::class);
     }
-  }
+
+    public function scopeFilter($query)
+    {
+        if (request('search')){
+            $query
+                ->where('title', 'like', '%' . request('search') . '%')
+                ->orWhere('body', 'like', '%' . request('search') . '%')
+                ->orWhere('excerpt', 'like', '%' . request('search') . '%');
+        };
+    }
+}
