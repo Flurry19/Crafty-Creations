@@ -20,11 +20,14 @@ return new class extends Migration
             $table->string('title');
             $table->text('excerpt');
             $table->text('body');
+            $table->text('extra');
             $table->timestamp('published_at')->nullable();
             $table->Integer('price');
-
-
-
+            $table->string('image');
+            $table->string('image2')->nullable();
+            $table->string('image3')->nullable();
+            $table->string('materials');
+            $table->string('url');
         });
     }
 

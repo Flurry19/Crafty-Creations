@@ -13,17 +13,15 @@ Route::get('/shops/{shop:slug}', [\App\Http\Controllers\ShopController::class, '
 
 Route::get('/categories/{category:slug}', [\App\Http\Controllers\CategoryController::class, 'show']);
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('guest');
 
+Route::get('/logout', [\App\Http\Controllers\SessionController::class, 'logout']);
 
-
-
-Route::get('/makeproduct', function () {
-    return view('makeproduct');
-});
+Route::get('/admin/products/create', [\App\Http\Controllers\ProductController::class, 'create'])->middleware('admin');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 
 

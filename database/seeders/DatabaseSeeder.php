@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         Category::truncate();
         Shop::truncate();
 
-        $user =  \App\Models\User::factory(10)->create();
+        $user =  \App\Models\User::factory(20)->create();
 
    $vaderdag = Category::create([
     'name' => 'Vaderdag',

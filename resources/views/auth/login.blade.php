@@ -15,21 +15,18 @@
                         <div class="mb-4">
                             <label for="email" class="block text-gray-700 text-sm font-bold mb-2">{{ __('Email Address') }}</label>
                             <input id="email" type="email" class="form-input @error('email') border-red-500 @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                            @error('email')
-                            <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                            @enderror
                         </div>
 
                         <div class="mb-4">
                             <label for="password" class="block text-gray-700 text-sm font-bold mb-2">{{ __('Password') }}</label>
                             <input id="password" type="password" class="form-input @error('password') border-red-500 @enderror" name="password" required autocomplete="current-password">
-
-                            @error('password')
-                            <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                            @enderror
                         </div>
-
+                        @error('email')
+                        <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                        @enderror
+                        @error('password')
+                        <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                        @enderror
                         <div class="mb-4">
                             <div class="flex items-center">
                                 <input class="form-checkbox" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
