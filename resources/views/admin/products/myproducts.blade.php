@@ -16,7 +16,7 @@
                 @foreach ($products as $product)
 
                     <tr>
-                        <td><a href="/products/{{$product->slug}}">{{$product->title}}</a></td>
+                        <td><a href="/admin/products/{{$product->slug}}">{{$product->title}}</a></td>
                         <td><a href="/admin/products/{{$product->id}}/edit">Edit</a></td>
                         {{--                <a href="/admin/products/{{$product->id}}/delete">Delete</a>--}}
                         <td><form method="POST" action="/admin/products/{{$product->id}}">
