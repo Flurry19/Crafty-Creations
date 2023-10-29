@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class AdminOnly
@@ -11,13 +12,20 @@ class AdminOnly
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()?->name != 'admin') {
-            abort(Response::HTTP_FORBIDDEN);
+        if (Auth::check()) {
+            if (Auth::user()->role == '1') {
+            } else if (Auth::user()->role == '2') {
+            } else {
+                return redirect('/');
+            }
+        } else {
+            return redirect('/login');
         }
+
         return $next($request);
     }
 }

@@ -8,15 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-//    protected $fillable = ['title', 'excerpt', 'body', 'price'];
+//    protected $fillable = ['title', 'excerpt', 'body', 'price', 'extra', 'URL', 'materials', 'nation', 'category_id', 'slug'];
     protected $guarded = ['id'];
-    protected $with = ['category', 'shop'];
+    protected $with = ['category', 'user'];
 
     public function category(){
         return $this->belongsTo(Category::class);
     }
 
-    public function shop(){
+    public function user(){
         return $this->belongsTo(Shop::class);
     }
 

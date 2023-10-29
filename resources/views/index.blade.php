@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <form method="GET" action="#">
+    <form method="GET" action="/filter">
         <label for="default-search" class="mb-2 text-sm font-medium text-white sr-only dark:text-white">Zoek</label>
         <div class="relative">
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -24,17 +24,33 @@
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                 </svg>
             </div>
-            <input type="search" name="search" id="default-search" value="{{request('search')}}" class="block w-500 p-4 pl-10 text-sm text-black rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-black dark:placeholder-black dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Zoek op producten..." required>
-            <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-300 hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-500 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-300 dark:hover:bg-blue-500 dark:focus:ring-blue-300">Search</button>
+            <input type="search" name="search" id="default-search" value="{{request('search')}}" class="block w-500 p-4 pl-10 text-sm text-black rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-black dark:placeholder-black dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Zoek op producten...">
         </div>
+        <div class="relative  flex flex-rows">
+            <input type="number" name="start_price" id="start_price" value="{{request('filter')}}" class="block w-500 p-4 pl-10 text-sm text-black rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-black dark:placeholder-black dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Laagste prijs">
+                <input type="number" name="end_price" id="end_price" value="{{request('filter')}}" class="block w-500 p-4 pl-10 text-sm text-black rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-black dark:placeholder-black dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Hoogste prijs">
+            <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-300 hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-500 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-300 dark:hover:bg-blue-500 dark:focus:ring-blue-300">Zoek</button>
+
+        </div>
+
+        <div class="relative  flex flex-rows">
+            <select name="categorysearch" id="categorysearch" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-black dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected>Kies een categorie</option>
+                @foreach(\App\Models\Category::all() as $category)
+                    <option value="{{$category->id}}">{{ucwords($category->name)}}</option>
+                @endforeach
+            </select>
+        </div>
+
     </form>
 
     <main>
         <div class="grid grid-cols-5 gap-4">
         @foreach($products as $product)
+            @if($product->status == '1')
             <div class="w-full max-w-sm bg-white border border-gra y-200 rounded-lg shadow dark:bg-white dark:border-gray-700 ">
                 <a href="#">
-                    <img class="p-8 rounded-t-lg" src="{{asset('img/logo.png')}}" alt="product image" />
+                    <img class="p-8 rounded-t-lg" src="{{asset('storage/' . $product->image)}}" alt="product image" />
                 </a>
                 <div class="px-5 pb-5">
                     <a href="#">
@@ -68,10 +84,11 @@
                     <div class="flex flex-col">
                         <a href="/products/{{$product->slug}}" class="text-white bg-blue-300 hover:bg-blue-300 focus:ring-4 focus:outline-none focus:ring-blue-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-300 dark:hover:bg-blue-500 dark:focus:ring-blue-500 mt-4">Meer informatie</a>
                         <a href="/categories/{{$product->category->slug}}" class="text-white bg-blue-300 hover:bg-blue-300 focus:ring-4 focus:outline-none focus:ring-blue-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-300 dark:hover:bg-blue-500 dark:focus:ring-blue-500 mt-4">{{$product->category->name}}</a>
-                        <a href="/shops/{{$product->shop->slug}}" class="text-white bg-blue-300 hover:bg-blue-300 focus:ring-4 focus:outline-none focus:ring-blue-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-300 dark:hover:bg-blue-500 dark:focus:ring-blue-500 mt-4">{{$product->shop->name}}</a>
+{{--                        <a href="/shops/{{$product->shop->slug}}" class="text-white bg-blue-300 hover:bg-blue-300 focus:ring-4 focus:outline-none focus:ring-blue-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-300 dark:hover:bg-blue-500 dark:focus:ring-blue-500 mt-4">{{$product->shop->name}}</a>--}}
                     </div>
                 </div>
             </div>
+            @endif
         @endforeach
     </main>
     </div>

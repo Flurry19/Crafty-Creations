@@ -1,4 +1,4 @@
-{{--@extends('footer')--}}
+@extends('footer')
 @extends('layout')
 @extends('nav')
 
@@ -16,30 +16,30 @@
                     <div class="lg:flex lg:items-start">
                         <div class="lg:order-2 lg:ml-5">
                             <div class="max-w-xl overflow-hidden rounded-lg">
-                                <img class="h-full w-full max-w-full object-cover" src="/images/JHxMnVrtPMdcNU1s_7g7f.png" alt="" />
+                                <img class="h-full w-full max-w-full object-cover" src="{{asset('storage/' . $product->image)}}" alt="" />
                             </div>
                         </div>
 
-                        <div class="mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
-                            <div class="flex flex-row items-start lg:flex-col">
-                                <button type="button" class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-gray-900 text-center">
-                                    <img class="h-full w-full object-cover" src="/images/JHxMnVrtPMdcNU1s_7g7f.png" alt="" />
-                                </button>
-                                <button type="button" class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center">
-                                    <img class="h-full w-full object-cover" src="/images/JHxMnVrtPMdcNU1s_7g7f.png" alt="" />
-                                </button>
-                                <button type="button" class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center">
-                                    <img class="h-full w-full object-cover" src="/images/JHxMnVrtPMdcNU1s_7g7f.png" alt="" />
-                                </button>
-                            </div>
-                        </div>
+{{--                        <div class="mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">--}}
+{{--                            <div class="flex flex-row items-start lg:flex-col">--}}
+{{--                                <button type="button" class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-gray-900 text-center">--}}
+{{--                                    <img class="h-full w-full object-cover" src="/images/JHxMnVrtPMdcNU1s_7g7f.png" alt="" />--}}
+{{--                                </button>--}}
+{{--                                <button type="button" class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center">--}}
+{{--                                    <img class="h-full w-full object-cover" src="/images/JHxMnVrtPMdcNU1s_7g7f.png" alt="" />--}}
+{{--                                </button>--}}
+{{--                                <button type="button" class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center">--}}
+{{--                                    <img class="h-full w-full object-cover" src="/images/JHxMnVrtPMdcNU1s_7g7f.png" alt="" />--}}
+{{--                                </button>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
 
                 <div class="lg:col-span-2 lg:row-span-2 lg:row-end-2">
                     <h1 class="sm: text-2xl font-bold text-gray-900 sm:text-3xl">{{$product->title}}</h1>
                     <h2 class="sm: text-sm text-gray-900 sm:text-sm">verkocht door</h2>
-                    <h2 class="sm: text-1xl font-bold text-gray-900 sm:text-xl">{{$product->shop->name}}</h2>
+{{--                    <h2 class="sm: text-1xl font-bold text-gray-900 sm:text-xl">{{$product->shop->name}}</h2>--}}
                     <div class="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0 grid grid-rows-3">
                         <div class="flex items-end row-span-3">
                             <h1 class="text-3xl font-bold">€{{$product->price}}</h1>
@@ -61,7 +61,7 @@
                             <svg class="mr-2 block h-5 w-5 align-middle text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" class=""></path>
                             </svg>
-                            Geproduceerd in {{$product->shop->nation}}
+{{--                            Geproduceerd in {{$product->shop->nation}}--}}
                         </li>
 
                         <li class="flex items-center text-left text-sm font-medium text-gray-600">
